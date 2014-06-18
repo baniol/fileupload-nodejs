@@ -20,7 +20,7 @@ app.use('/upload/location', upload.fileHandler({
     tmpDir: __dirname + dirs.temp,
     uploadDir: __dirname + dirs.location,
     uploadUrl: dirs.location_url,
-    acceptFileTypes: /\.(gif|jpe?g|png|mp3|wmv)$/i,
+    acceptFileTypes: /\.(gif|jpe?g|png|mp3|wmv|mp4)$/i,
     maxFileSize: 10000000, // 10M
     imageVersions: {
         thumbnail: {
