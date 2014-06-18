@@ -28,6 +28,15 @@ block content
         table.table.table-striped(role='presentation')
           tbody.files
 
+    #blueimp-gallery.blueimp-gallery.blueimp-gallery-controls(data-filter=':even')
+      .slides
+      h3.title
+      a.prev ‹
+      a.next ›
+      a.close ×
+      a.play-pause
+      ol.indicator
+
     script#template-upload(type='text/x-tmpl').
       {% for (var i=0, file; file=o.files[i]; i++) { %}
         <tr class="template-upload fade">
@@ -105,6 +114,9 @@ block content
     //
        The Load Image plugin is included for the preview images and image resizing functionality 
     script(src='http://blueimp.github.io/JavaScript-Load-Image/js/load-image.min.js')
+    //
+     blueimp Gallery script 
+    script(src='http://blueimp.github.io/Gallery/js/jquery.blueimp-gallery.min.js')
     //
        The Iframe Transport is required for browsers without support for XHR file uploads 
     script(src='js/jquery.iframe-transport.js')
