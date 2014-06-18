@@ -20,7 +20,7 @@ app.use('/upload/location', upload.fileHandler({
     tmpDir: __dirname + dirs.temp,
     uploadDir: __dirname + dirs.location,
     uploadUrl: dirs.location_url,
-    acceptFileTypes: /\.(gif|jpe?g|png)$/i,
+    acceptFileTypes: /\.(gif|jpe?g|png|mp3|wmv)$/i,
     maxFileSize: 10000000, // 10M
     imageVersions: {
         thumbnail: {
@@ -30,19 +30,6 @@ app.use('/upload/location', upload.fileHandler({
     }
     //imageTypes: /\.(gif|jpe?g|png)$/i
 }));
-
-app.use('/upload/location/list', function (req, res) {
-    upload.fileManager({
-        uploadDir: function () {
-            return __dirname + dirs.location;
-        },
-        uploadUrl: function () {
-            return dirs.locationUrl;
-        }
-    }).getFiles(function (files) {
-        res.json(files);
-    });
-});
 
 // Actions on upload events
 upload.on('end', function (fileInfo) {

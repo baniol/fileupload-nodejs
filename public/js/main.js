@@ -7,7 +7,7 @@ $(function () {
         //xhrFields: {withCredentials: true},
         url: '/upload/location',
         maxFileSize: 10000000, // 10M
-        acceptFileTypes: /(\.|\/)(gif|jpe?g|png)$/i
+        acceptFileTypes: /(\.|\/)(gif|jpe?g|png|mp3|wmv)$/i
     });
 
     // Enable iframe cross-domain access via redirect option:
