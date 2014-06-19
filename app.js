@@ -12,6 +12,11 @@ process.on('uncaughtException', function(err) {
     console.log('Threw Exception: ', err);
 });
 
+var uploadSettings = {
+  acceptFileTypes: "(\.|\/)(gif|jpe?g|png|mp3|wmv|mp4|pls)$",
+  maxFileSize: 10000000 // 10M
+};
+
 var dirs = require('./config').directors;
 
 var app = express();
@@ -20,8 +25,8 @@ app.use('/upload/location', upload.fileHandler({
     tmpDir: __dirname + dirs.temp,
     uploadDir: __dirname + dirs.location,
     uploadUrl: dirs.location_url,
-    acceptFileTypes: /\.(gif|jpe?g|png|mp3|wmv|mp4)$/i,
-    maxFileSize: 10000000, // 10M
+    acceptFileTypes: new RegExp(uploadSettings.acceptFileTypes, 'i'),
+    maxFileSize: uploadSettings.maxFileSize,
     imageVersions: {
         thumbnail: {
             width: 80,
@@ -52,6 +57,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/', function(req, res) {
   res.render('upload', { title: 'Blueimp fileuploader' });
+});
+
+app.get('/upload/settings', function (req, res) {
+  res.setHeader('Content-Type', 'application/json');
+  res.send(200, JSON.stringify(uploadSettings));
 });
 
 app.set('port', process.env.PORT || 3000);
