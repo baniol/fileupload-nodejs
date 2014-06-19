@@ -18,7 +18,6 @@ $(function () {
     }).done(function (result) {
       //var match = url.match(new RegExp(result.acceptFileTypes.regex, 'i'));
       var regexp = new RegExp(result.acceptFileTypes, 'i');
-      console.log(regexp);
       //match = regexp.exec(url);
       $('#fileupload').fileupload(
           'option',

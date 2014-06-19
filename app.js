@@ -8,13 +8,15 @@ var bodyParser = require('body-parser');
 
 var upload = require('jquery-file-upload-middleware');
 
+var fileHandler = require('./libs/filehandler.js');
+
 process.on('uncaughtException', function(err) {
     console.log('Threw Exception: ', err);
 });
 
 var uploadSettings = {
   acceptFileTypes: "(\.|\/)(gif|jpe?g|png|mp3|wmv|mp4|pls)$",
-  maxFileSize: 10000000 // 10M
+  maxFileSize: 100000000 // 100M
 };
 
 var dirs = require('./config').directors;
@@ -38,7 +40,7 @@ app.use('/upload/location', upload.fileHandler({
 
 // Actions on upload events
 upload.on('end', function (fileInfo) {
-    console.log(fileInfo);
+    fileHandler.save(fileInfo);
 });
 
 upload.on('delete', function (fileName) {
