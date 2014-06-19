@@ -56,16 +56,20 @@ $(function () {
         $(this).removeClass('fileupload-processing');
     }).done(function (result) {
         //console.log(result);
-        //result.files.map(function (el) {
-          ////@TODO move to backend
-          //var ext = el.name.split('.').pop();
-          //el.href = el.url;
-          //if (ext === 'mp4' || ext === 'mp3') {
-            //el.type = 'video/mp4';
+        result.files.map(function (el) {
+          //@TODO move to backend
+          var ext = el.name.split('.').pop();
+          el.href = el.url;
+          if (ext === 'mp4') {
+            el.type = 'video';
             //el.thumbnailUrl = '/img/multimedia.png';
-          //}
-          //return el;
-        //});
+          }
+          else if (ext === 'mp3') {
+            el.type = 'audio';
+          }
+          return el;
+        });
+        //console.log(result);
         //fileList = result.files;
         $(this).fileupload('option', 'done')
             .call(this, $.Event('done'), {result: result});
