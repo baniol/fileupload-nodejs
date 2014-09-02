@@ -1,12 +1,12 @@
 'use strict';
 
-var express = require('express');
-var path = require('path');
-var favicon = require('static-favicon');
-//var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
+var express         = require('express');
+var path            = require('path');
+var favicon         = require('static-favicon');
+//var cookieParser  = require('cookie-parser');
+var bodyParser      = require('body-parser');
 
-var upload = require('jquery-file-upload-middleware');
+var upload          = require('jquery-file-upload-middleware');
 
 process.on('uncaughtException', function(err) {
     console.log('Threw Exception: ', err);
